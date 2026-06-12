@@ -1,0 +1,69 @@
+<!-- ============================================================ -->
+<!-- COLUMNA DERECHA (40%)                                        -->
+<!-- ============================================================ -->
+<div class="lg:col-span-2">
+
+  <div class="bg-blue-50/70 rounded-xl border border-blue-100 p-6 space-y-6">
+
+    <h2 class="text-xl font-semibold text-slate-800">Resumen y Acciones</h2>
+
+    <!-- Vista Previa -->
+    <div class="bg-white rounded-lg border border-slate-200 p-4">
+      <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Emitido a</p>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        <span class="font-medium">Carlos Rivera Santos</span><br />
+        <span class="text-slate-500">DNI: 45678912 | contacto@rivera.com</span>
+      </p>
+    </div>
+
+    <!-- Desglose de Totales -->
+    <div>
+      <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Desglose de Totales</p>
+      <div class="space-y-2">
+        <div class="flex justify-between text-sm text-slate-600">
+          <span>Subtotal Gravado</span>
+          <span class="font-medium text-slate-700">PEN S/ 0,000.00</span>
+        </div>
+        <div class="flex justify-between text-sm text-slate-600">
+          <span>Total Exonerado</span>
+          <span class="font-medium text-slate-700">PEN S/ 0.00</span>
+        </div>
+        <div class="flex justify-between text-sm text-slate-600">
+          <span>Total Impuesto (IGV 18%)</span>
+          <span class="font-medium text-slate-700">PEN S/ 0.00</span>
+        </div>
+        <div class="border-t border-blue-200 pt-3 mt-3">
+          <div class="flex justify-between">
+            <span class="text-base font-bold text-slate-800">TOTAL GENERAL</span>
+            <span class="text-2xl font-extrabold text-blue-700">PEN S/ 0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón Principal -->
+    <button
+      (click)="onConfirmarEmitir()"
+      class="w-full cursor-pointer rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md transition hover:bg-blue-700 hover:shadow-lg active:scale-[0.99]">
+      CONFIRMAR Y EMITIR ✅
+    </button>
+
+    <!-- Botones Secundarios -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button
+        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
+        <span class="text-base">📄</span> Descargar PDF
+      </button>
+      <button
+        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
+        <span class="text-base">✉️</span> Compartir vía Email
+      </button>
+      <button
+        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
+        <span class="text-base">🔗</span> Generar Enlace de Pago
+      </button>
+    </div>
+
+  </div>
+
+</div>

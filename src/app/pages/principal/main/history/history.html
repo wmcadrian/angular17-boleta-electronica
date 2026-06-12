@@ -1,0 +1,20 @@
+<!-- Bloque 4: Historial -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+  <p class="text-sm font-semibold text-slate-700 mb-3">Últimas 5 boletas</p>
+  <div class="space-y-2">
+    @for (item of numberingService.historial(); track $index) {
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-slate-600">{{ item.numero }}</span>
+        <span class="text-slate-600">{{ item.fecha }}</span>
+        <span
+          class="text-xs font-medium"
+          [class.text-green-600]="item.estado === '✓ Aceptada SUNAT'"
+          [class.text-amber-600]="item.estado === '◷ Pendiente'"
+          [class.text-red-600]="item.estado === '✗ Rechazada'"
+        >{{ item.estado }}</span>
+      </div>
+    } @empty {
+      <p class="text-sm text-slate-400 text-center py-4">Aún no hay boletas emitidas</p>
+    }
+  </div>
+</div>

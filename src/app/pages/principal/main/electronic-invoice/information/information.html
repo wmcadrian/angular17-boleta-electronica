@@ -1,0 +1,105 @@
+<!-- Bloque 1: Datos del Cliente -->
+<form [formGroup]="clientForm" class="mb-6">
+  <p class="text-sm font-semibold text-slate-700 mb-3">Datos del Cliente</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div>
+      <label class="text-xs font-medium text-slate-500 block mb-1">Tipo de Documento</label>
+      <select
+        formControlName="documentType"
+        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        @for (option of documentTypeOptions; track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label class="text-xs font-medium text-slate-500 block mb-1">Número de Documento</label>
+      <input 
+        type="text" 
+        formControlName="documentNumber"
+        [attr.maxlength]="maxDocumentLength"
+        (input)="onDocumentNumberInput($event)"
+        [class.border-red-400]="clientForm.get('documentNumber')?.invalid && clientForm.get('documentNumber')?.touched" 
+        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      @if (clientForm.get('documentNumber')?.invalid && clientForm.get('documentNumber')?.touched) {
+        <p class="text-red-500 text-xs mt-1">{{ documentNumberError }}</p>
+      }
+    </div>
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="relative">
+      <label class="text-xs font-medium text-slate-500 block mb-1">Nombres y Apellidos</label>
+      <div class="relative">
+        <input
+          formControlName="fullName" 
+          type="text" 
+          value="Pedro Hernandez"
+          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        @if (clientForm.get('fullName')?.invalid && clientForm.get('fullName')?.touched) {
+          <p class="text-red-500 text-xs mt-1">{{ fullNameError }}</p>
+        }
+      </div>
+    </div>
+    <div class="relative">
+      <label class="text-xs font-medium text-slate-500 block mb-1">Correo electrónico</label>
+      <div class="relative">
+        <input 
+          formControlName="email"
+          type="text" 
+          value="contacto@rivera.com"
+          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        @if (clientForm.get('email')?.invalid && clientForm.get('email')?.touched) {
+          <p class="text-red-500 text-xs mt-1">{{ emailError }}</p>
+        }
+      </div>
+    </div>
+  </div>
+
+
+<!-- Bloque 2: Configuración Legal -->
+  <p class="text-sm font-semibold text-slate-700 mb-3">Configuración Legal</p>
+  <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+
+    <div>
+      <label class="text-xs font-medium text-slate-500 block mb-1">Divisa de la Boleta</label>
+      <select
+        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option selected>PEN - Soles (native)</option>
+        <option>USD - Dólares</option>
+        <option>EUR - Euros</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+
+    <div>
+      <label class="text-xs font-medium text-slate-500 block mb-1">Numeración y Fecha Legal</label>
+      <div class="flex gap-3">
+        <div class="relative flex-1">
+          <input type="text" [value]="'Serie: ' + numberingService.serieCompleta()" disabled
+            class="w-full rounded-lg border border-slate-300 bg-gray-100 px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <div class="relative flex-1">
+          <input 
+            formControlName="fechaLegal"
+            type="date" 
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          @if (clientForm.get('fechaLegal')?.invalid && clientForm.get('fechaLegal')?.touched) {
+            <p class="text-red-500 text-xs mt-1">La fecha es obligatoria</p>
+          }
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+<h3>Formulario</h3>
+<code>
+  {{ clientForm.value | json }}
+</code>
+<p>is form valid: {{ clientForm.valid }}</p>
