@@ -1,112 +1,90 @@
-<!-- Bloque 3: Tabla de Conceptos -->
-<div class="mb-4">
-  <p class="text-sm font-semibold text-slate-700 mb-3">Conceptos</p>
+<div [formGroup]="form">
+  <div class="mb-4">
+    <p class="text-sm font-semibold text-slate-700 mb-3">Conceptos</p>
 
-  <div class="overflow-x-auto rounded-lg border border-slate-200">
-    <table class="w-full text-sm">
-      <thead>
-        <tr class="bg-slate-100 text-xs font-semibold text-slate-500 uppercase">
-          <th class="text-left px-3 py-3">Descripción</th>
-          <th class="text-center px-3 py-3">Cantidad</th>
-          <th class="text-right px-3 py-3">Precio Unitario</th>
-          <th class="text-center px-3 py-3">Afectación IGV</th>
-          <th class="text-right px-3 py-3">Total Fila</th>
-          <th class="w-10 px-3 py-3"></th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-slate-100">
-        <!-- FILA 1 -->
-        <tr>
-          <td class="px-3 py-2">
-            <input type="text" value="Desarrollo Web"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="40"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-center focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="$75.00"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-right focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <select
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Gravado (18%)</option>
-              <option>Exonerado</option>
-            </select>
-          </td>
-          <td class="px-3 py-2 text-right">
-            <span class="text-sm font-medium text-slate-800">$3,000.00</span>
-          </td>
-          <td class="px-3 py-2 text-center">
-            <button class="text-red-500 hover:text-red-700 transition cursor-pointer">🗑️</button>
-          </td>
-        </tr>
-        <!-- FILA 2: Select desplegado -->
-        <tr>
-          <td class="px-3 py-2">
-            <input type="text" value="Consultoría SEO"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="10"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-center focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="$120.00"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-right focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2 relative">
-            <div class="relative">
-              <select
-                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option>Gravado (18%)</option>
-                <option>Exonerado</option>
-              </select>
-            </div>
-          </td>
-          <td class="px-3 py-2 text-right">
-            <span class="text-sm font-medium text-slate-800">$1,200.00</span>
-          </td>
-          <td class="px-3 py-2 text-center">
-            <button class="text-red-500 hover:text-red-700 transition cursor-pointer">🗑️</button>
-          </td>
-        </tr>
-        <!-- FILA 3 -->
-        <tr>
-          <td class="px-3 py-2">
-            <input type="text" value="Hosting Anual"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="1"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-center focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <input type="text" value="$150.00"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-right focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </td>
-          <td class="px-3 py-2">
-            <select
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Gravado (18%)</option>
-              <option>Exonerado</option>
-            </select>
-          </td>
-          <td class="px-3 py-2 text-right">
-            <span class="text-sm font-medium text-slate-800">$150.00</span>
-          </td>
-          <td class="px-3 py-2 text-center">
-            <button class="text-red-500 hover:text-red-700 transition cursor-pointer">🗑️</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="overflow-x-auto rounded-lg border border-slate-200">
+      <table class="w-full text-sm" style="min-width: 1200px;">
+        <thead>
+          <tr class="bg-slate-100 text-xs font-semibold text-slate-500 uppercase">
+            <th class="text-left px-3 py-3 min-w-56">Descripción</th>
+            <th class="text-center px-3 py-3 w-24">Cantidad</th>
+            <th class="text-right px-3 py-3 w-32">Precio Unitario</th>
+            <th class="text-right px-3 py-3 w-28">Subtotal</th>
+            <th class="text-center px-3 py-3 w-40">Afectación IGV</th>
+            <th class="text-right px-3 py-3 w-32">Subtotal afectación</th>
+            <th class="text-right px-3 py-3 w-28">Total</th>
+            <th class="w-10 px-3 py-3"></th>
+          </tr>
+        </thead>
+        <tbody formArrayName="conceptos" class="divide-y divide-slate-100">
+          @for (concepto of conceptos.controls; track concepto) {
+            <tr [formGroupName]="$index">
+              <td class="px-3 py-2">
+                <input 
+                  formControlName="descripcion"
+                  type="text" 
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-[12px]"
+                  [class.border-red-400]="conceptos.at($index).get('descripcion')?.invalid && conceptos.at($index).get('descripcion')?.touched" />
+              </td>
+              <td class="px-3 py-2">
+                <input 
+                  formControlName="cantidad"
+                  type="number" 
+                  step="any" 
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 text-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-[12px]"
+                  [class.border-red-400]="conceptos.at($index).get('cantidad')?.invalid && conceptos.at($index).get('cantidad')?.touched" />
+              </td>
+              <td class="px-3 py-2">
+                <div class="flex items-center rounded-lg border bg-white px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-blue-500 text-[12px]"
+                  [class.border-slate-300]="!(conceptos.at($index).get('precioUnitario')?.invalid && conceptos.at($index).get('precioUnitario')?.touched)"
+                  [class.border-red-400]="conceptos.at($index).get('precioUnitario')?.invalid && conceptos.at($index).get('precioUnitario')?.touched">
+                  <span class="text-slate-500 mr-0.5 font-medium">S/</span>
+                  <input 
+                    type="text"
+                    inputmode="decimal"
+                    formControlName="precioUnitario"
+                    (blur)="formatPrecioUnitario($index)"
+                    class="w-full bg-transparent text-right outline-none text-slate-700 text-[12px]" />
+                </div>
+              </td>
+              <td class="px-3 py-2 text-right">
+                <span class="text-[12px] text-slate-800">{{ submonto($index) }}</span>
+              </td>
+              <td class="px-3 py-2">
+                <select formControlName="igv"
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-[12px]">
+                  @for (opt of igvService.igvOptions; track opt.value) {
+                    <option [value]="opt.value">{{ opt.label }}</option>
+                  }
+                </select>
+              </td>
+              <td class="px-3 py-2 text-right">
+                <span class="text-[12px] text-slate-800">{{ subafectacion($index) }}</span>
+              </td>
+              <td class="px-3 py-2 text-right">
+                <span class="text-[12px] text-slate-800">{{ subtotal($index) }}</span>
+              </td>
+              <td class="px-3 py-2 text-center">
+                <button 
+                  (click)="removeConcepto($index)" 
+                  type="button" 
+                  class="text-red-500 hover:text-red-700 transition cursor-pointer">🗑️</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (conceptos.length === 0 ) {
+      <p class="text-red-500 text-xs mt-2">Debe agregar al menos un concepto</p>
+    }
+
+    <button 
+      (click)="addConcepto()"
+      type="button" 
+      class="mt-3 w-full cursor-pointer rounded-lg border-2 border-dashed border-blue-300 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-100 hover:border-blue-400">
+      + Añadir nuevo concepto
+    </button>
   </div>
-
-  <button
-    class="mt-3 w-full cursor-pointer rounded-lg border-2 border-dashed border-blue-300 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-100 hover:border-blue-400">
-    + Añadir nuevo concepto
-  </button>
 </div>

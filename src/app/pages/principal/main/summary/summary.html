@@ -11,31 +11,36 @@
     <div class="bg-white rounded-lg border border-slate-200 p-4">
       <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Emitido a</p>
       <p class="text-sm text-slate-700 leading-relaxed">
-        <span class="font-medium">Carlos Rivera Santos</span><br />
-        <span class="text-slate-500">DNI: 45678912 | contacto@rivera.com</span>
+        @let c = invoiceService.clienteSnapshot();
+        @if (c) {
+          <span class="font-medium">{{ c.fullName }}</span><br />
+          <span class="font-medium">{{ documentTypeLabel }}: <span class="text-slate-400">{{ c.documentNumber }}</span></span><br />
+          <span class="font-medium">Correo electrónico: <span class="text-slate-400">{{ c.email }}</span></span>
+        } @else {
+          <span class="font-medium">Nombre y Apellido</span><br />
+          <span class="font-medium">Tipo de documento: <span class="text-slate-400">Número de documento</span></span><br />
+          <span class="font-medium">Correo electrónico: <span class="text-slate-400">micorreo@correo.com</span></span>
+        }
       </p>
     </div>
 
     <!-- Desglose de Totales -->
     <div>
       <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Desglose de Totales</p>
+      @let t = invoiceService.totalesSnapshot();
       <div class="space-y-2">
         <div class="flex justify-between text-sm text-slate-600">
-          <span>Subtotal Gravado</span>
-          <span class="font-medium text-slate-700">PEN S/ 0,000.00</span>
+          <span>Subtotal</span>
+          <span class="font-medium text-slate-700">PEN S/ {{ t ? invoiceService.formatAmount(t.subtotal) : '0.00' }}</span>
         </div>
         <div class="flex justify-between text-sm text-slate-600">
-          <span>Total Exonerado</span>
-          <span class="font-medium text-slate-700">PEN S/ 0.00</span>
-        </div>
-        <div class="flex justify-between text-sm text-slate-600">
-          <span>Total Impuesto (IGV 18%)</span>
-          <span class="font-medium text-slate-700">PEN S/ 0.00</span>
+          <span>SubTotal Afectación (Gravado 18%)</span>
+          <span class="font-medium text-slate-700">PEN S/ {{ t ? invoiceService.formatAmount(t.subafectacion) : '0.00' }}</span>
         </div>
         <div class="border-t border-blue-200 pt-3 mt-3">
           <div class="flex justify-between">
             <span class="text-base font-bold text-slate-800">TOTAL GENERAL</span>
-            <span class="text-2xl font-extrabold text-blue-700">PEN S/ 0.00</span>
+            <span class="text-2xl font-extrabold text-blue-700">PEN S/ {{ t ? invoiceService.formatAmount(t.totalGeneral) : '0.00' }}</span>
           </div>
         </div>
       </div>
