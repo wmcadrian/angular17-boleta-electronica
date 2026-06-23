@@ -46,29 +46,25 @@ export class Concepts {
     control.setValue(num.toFixed(2), { emitEvent: false });
   }
 
-  protected simbolo(): string {
-    return this.invoiceService.simboloDivisa(this.invoiceService.divisaActiva());
-  }
-
   submonto(index: number): string {
     const row = this.conceptos.at(index)?.value;
-    if (!row) return `${this.simbolo()} 0.00`;
-    return `${this.simbolo()} ${this.invoiceService.formatAmount(row.cantidad * Number(row.precioUnitario))}`;
+    if (!row) return 'S/ 0.00';
+    return `S/ ${this.invoiceService.formatAmount(row.cantidad * Number(row.precioUnitario))}`;
   }
 
   subafectacion(index: number): string {
     const row = this.conceptos.at(index)?.value;
-    if (!row) return `${this.simbolo()} 0.00`;
+    if (!row) return 'S/ 0.00';
     const base = row.cantidad * Number(row.precioUnitario);
     const factor = row.igv === 'gravado' ? 0.18 : 0;
-    return `${this.simbolo()} ${this.invoiceService.formatAmount(base * factor)}`;
+    return `S/ ${this.invoiceService.formatAmount(base * factor)}`;
   }
 
   subtotal(index: number): string {
     const row = this.conceptos.at(index)?.value;
-    if (!row) return `${this.simbolo()} 0.00`;
+    if (!row) return 'S/ 0.00';
     const base = row.cantidad * Number(row.precioUnitario);
     const factor = row.igv === 'gravado' ? 1.18 : 1;
-    return `${this.simbolo()} ${this.invoiceService.formatAmount(base * factor)}`;
+    return `S/ ${this.invoiceService.formatAmount(base * factor)}`;
   }
 }
