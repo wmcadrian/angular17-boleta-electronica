@@ -38,7 +38,8 @@
           formControlName="fullName" 
           type="text" 
           value="Pedro Hernandez"
-          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          [class.border-red-400]="clienteForm.get('fullName')?.invalid && clienteForm.get('fullName')?.touched" 
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
         @if (clienteForm.get('fullName')?.invalid && clienteForm.get('fullName')?.touched) {
           <p class="text-red-500 text-xs mt-1">{{ fullNameError }}</p>
         }
@@ -51,6 +52,7 @@
           formControlName="email"
           type="text" 
           value="contacto@rivera.com"
+          [class.border-red-400]="clienteForm.get('email')?.invalid && clienteForm.get('email')?.touched"
           class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
         @if (clienteForm.get('email')?.invalid && clienteForm.get('email')?.touched) {
           <p class="text-red-500 text-xs mt-1">{{ emailError }}</p>
@@ -67,10 +69,11 @@
     <div>
       <label class="text-xs font-medium text-slate-500 block mb-1">Divisa de la Boleta</label>
       <select
+        formControlName="divisa"
         class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-        <option selected>PEN - Soles (native)</option>
-        <option>USD - Dólares</option>
-        <option>EUR - Euros</option>
+        @for (opt of currencyOptions; track opt.value) {
+          <option [value]="opt.value">{{ opt.label }}</option>
+        }
       </select>
     </div>
 

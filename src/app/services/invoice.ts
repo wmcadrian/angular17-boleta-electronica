@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { documentNumberValidator } from '../validators/document.validator';
 import { fullNameValidator } from '../validators/fullName.validator';
 import { minLengthArray } from '../validators/array.validator';
+import { ExchangeRates } from './exchange-rate';
 
 export interface ClienteSnapshot {
   fullName: string;
@@ -28,6 +29,9 @@ export class InvoiceService {
 
   readonly clienteSnapshot = signal<ClienteSnapshot | null>(null);
   readonly totalesSnapshot = signal<TotalesSnapshot | null>(null);
+
+  readonly divisaActiva = signal<string>('PEN');
+  readonly tasasCambio = signal<ExchangeRates | null>(null);
 
   get cliente(): FormGroup {
     return this.form.get('cliente') as FormGroup;
@@ -70,6 +74,10 @@ export class InvoiceService {
   }
 
   constructor() {
+    this.form.get('cliente.divisa')?.valueChanges.subscribe(value => {
+      this.divisaActiva.set(value);
+    });
+
     this.form.get('cliente.documentType')?.valueChanges.subscribe(type => {
       const control = this.form.get('cliente.documentNumber');
       if (control) {
@@ -112,12 +120,13 @@ export class InvoiceService {
           ]
         ],
         fechaLegal: [this.getTodayISO(), Validators.required],
+        divisa: ['PEN', Validators.required],
       }),
       conceptos: this.fb.array<FormGroup>(
         [
-          this.crearConcepto('Desarrollo Web', 40, 75),
+          /* this.crearConcepto('Desarrollo Web', 40, 75),
           this.crearConcepto('Consultoría SEO', 10, 120),
-          this.crearConcepto('Hosting Anual', 1, 150),
+          this.crearConcepto('Hosting Anual', 1, 150), */
         ],
         [minLengthArray(1)]
       ),

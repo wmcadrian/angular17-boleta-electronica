@@ -3,6 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { DocumentService } from '../../../../../services/document';
+import { DivisaService } from '../../../../../services/divisa';
 import { InvoiceService } from '../../../../../services/invoice';
 import { NumberingService } from '../../../../../services/numbering';
 
@@ -20,8 +21,10 @@ export class Information implements OnInit, OnDestroy {
   private documentService = inject(DocumentService);
   private invoiceService = inject(InvoiceService);
   protected numberingService = inject(NumberingService);
+  protected divisaService = inject(DivisaService);
 
   public documentTypeOptions = this.documentService.documentTypeOptions;
+  protected currencyOptions = this.divisaService.getCurrencies();
   private fechaSubscription?: Subscription;
 
   get clienteForm(): FormGroup {

@@ -1,0 +1,40 @@
+<div
+    class="modal-overlay fixed inset-0 z-50 flex items-start justify-center bg-black/50"
+    (click)="onOverlayClick($event)"
+  >
+    <div class="mt-20 w-full max-w-md rounded-xl bg-white p-6 shadow-2xl">
+      <div class="text-center">
+        @if (tipo() === 'exito') {
+          <span class="inline-flex size-14 items-center justify-center rounded-full bg-green-100 text-3xl">
+            ✅
+          </span>
+        } @else {
+          <span class="inline-flex size-14 items-center justify-center rounded-full bg-red-100 text-3xl">
+            ❌
+          </span>
+        }
+
+        <h3 class="mt-4 text-lg font-bold text-slate-900">
+          {{ titulo() }}
+        </h3>
+
+        <p class="mt-2 text-sm text-slate-600">
+          {{ mensaje() }}
+        </p>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button
+          type="button"
+          (click)="cerrado.emit()"
+          class="cursor-pointer rounded-lg px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
+          [class.bg-blue-600]="tipo() === 'exito'"
+          [class.hover:bg-blue-700]="tipo() === 'exito'"
+          [class.bg-red-500]="tipo() === 'error'"
+          [class.hover:bg-red-600]="tipo() === 'error'"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>

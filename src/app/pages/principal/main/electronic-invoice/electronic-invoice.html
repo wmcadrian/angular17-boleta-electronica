@@ -11,13 +11,34 @@
     <button 
       (click)="validarCalcular()"
       type="button"
-      class="w-full cursor-pointer rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md transition hover:bg-blue-700 hover:shadow-lg active:scale-[0.99]">
-      VALIDAR Y CALCULAR SUBTOTALES ✅
+      [disabled]="loadingTasas()"
+      class="w-full rounded-xl px-6 py-4 text-base font-bold text-white tracking-wide shadow-md transition active:scale-[0.99]"
+      [class.cursor-pointer]="!loadingTasas()"
+      [class.cursor-wait]="loadingTasas()"
+      [class.bg-blue-600]="!loadingTasas()"
+      [class.hover:bg-blue-700]="!loadingTasas()"
+      [class.hover:shadow-lg]="!loadingTasas()"
+      [class.bg-blue-400]="loadingTasas()">
+      @if (loadingTasas()) {
+        Consultando tasas de cambio… ⏳
+      } @else {
+        VALIDAR Y CALCULAR SUBTOTALES ✅
+      }
     </button>
 
   </div>
 
   <app-history></app-history>
+
+  @let modalConfig = modalService.modalState$ | async;
+  @if (modalConfig) {
+    <app-modal
+      [tipo]="modalConfig.tipo"
+      [titulo]="modalConfig.titulo"
+      [mensaje]="modalConfig.mensaje"
+      (cerrado)="modalService.cerrar()"
+    />
+  }
 
   <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4">
     <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Debug formulario</p>
