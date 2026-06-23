@@ -32,9 +32,11 @@ export class ElectronicInvoice {
     this.invoiceService.form.markAllAsTouched();
     if (this.invoiceService.form.invalid) return;
 
+    const divisa = this.invoiceService.form.get('cliente.divisa')?.value;
+    this.invoiceService.divisaActiva.set(divisa);
     this.invoiceService.tomarSnapshot();
 
-    if (this.invoiceService.divisaActiva() === 'PEN') return;
+    if (divisa === 'PEN') return;
 
     this.loadingTasas.set(true);
 

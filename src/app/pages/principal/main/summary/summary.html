@@ -31,16 +31,16 @@
       <div class="space-y-2">
         <div class="flex justify-between text-sm text-slate-600">
           <span>Subtotal</span>
-          <span class="font-medium text-slate-700">{{ t ? mostrarEnDivisa(t.subtotal) : 'PEN S/ 0.00' }}</span>
+          <span class="font-medium text-slate-700">{{ t ? mostrarEnDivisa(t.subtotal) : 'S/ 0.00' }}</span>
         </div>
         <div class="flex justify-between text-sm text-slate-600">
           <span>SubTotal Afectación (Gravado 18%)</span>
-          <span class="font-medium text-slate-700">{{ t ? mostrarEnDivisa(t.subafectacion) : 'PEN S/ 0.00' }}</span>
+          <span class="font-medium text-slate-700">{{ t ? mostrarEnDivisa(t.subafectacion) : 'S/ 0.00' }}</span>
         </div>
         <div class="border-t border-blue-200 pt-3 mt-3">
           <div class="flex justify-between">
             <span class="text-base font-bold text-slate-800">TOTAL GENERAL</span>
-            <span class="text-2xl font-extrabold text-blue-700">{{ t ? mostrarEnDivisa(t.totalGeneral) : 'PEN S/ 0.00' }}</span>
+            <span class="text-2xl font-extrabold text-blue-700">{{ t ? mostrarEnDivisa(t.totalGeneral) : 'S/ 0.00' }}</span>
           </div>
         </div>
       </div>
@@ -50,24 +50,8 @@
     <button
       (click)="onConfirmarEmitir()"
       class="w-full cursor-pointer rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md transition hover:bg-blue-700 hover:shadow-lg active:scale-[0.99]">
-      CONFIRMAR Y EMITIR ✅
+      CONFIRMAR Y EMITIR
     </button>
-
-    <!-- Botones Secundarios -->
-    <div class="flex flex-col sm:flex-row gap-3">
-      <button
-        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
-        <span class="text-base">📄</span> Descargar PDF
-      </button>
-      <button
-        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
-        <span class="text-base">✉️</span> Compartir vía Email
-      </button>
-      <button
-        class="flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 flex items-center justify-center gap-2">
-        <span class="text-base">🔗</span> Generar Enlace de Pago
-      </button>
-    </div>
 
   </div>
 

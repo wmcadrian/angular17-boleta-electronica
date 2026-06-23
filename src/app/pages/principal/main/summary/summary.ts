@@ -37,11 +37,12 @@ export class Summary {
   protected mostrarEnDivisa(monto: number): string {
     const divisa = this.invoiceService.divisaActiva();
     const tasas = this.invoiceService.tasasCambio();
+    const simbolo = this.invoiceService.simboloDivisa(divisa);
     if (divisa === 'PEN' || !tasas?.[divisa]) {
-      return `PEN S/ ${this.invoiceService.formatAmount(monto)}`;
+      return `${simbolo} ${this.invoiceService.formatAmount(monto)}`;
     }
     const convertido = this.convertir(monto);
-    return `${divisa} S/ ${this.invoiceService.formatAmount(convertido)}`;
+    return `${simbolo} ${this.invoiceService.formatAmount(convertido)}`;
   }
 
   onConfirmarEmitir(): void {

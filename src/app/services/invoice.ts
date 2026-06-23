@@ -45,6 +45,11 @@ export class InvoiceService {
     return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
+  simboloDivisa(divisa: string): string {
+    const map: Record<string, string> = { PEN: 'S/', USD: '$', EUR: '€' };
+    return map[divisa] ?? 'S/';
+  }
+
   tomarSnapshot(): void {
     const c = this.cliente.value;
     this.clienteSnapshot.set({
@@ -74,10 +79,6 @@ export class InvoiceService {
   }
 
   constructor() {
-    this.form.get('cliente.divisa')?.valueChanges.subscribe(value => {
-      this.divisaActiva.set(value);
-    });
-
     this.form.get('cliente.documentType')?.valueChanges.subscribe(type => {
       const control = this.form.get('cliente.documentNumber');
       if (control) {
